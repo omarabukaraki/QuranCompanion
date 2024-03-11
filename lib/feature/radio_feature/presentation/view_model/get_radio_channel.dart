@@ -1,4 +1,4 @@
-import 'package:quran_companion/api.dart';
+import 'package:quran_companion/core/api.dart';
 import 'package:quran_companion/feature/radio_feature/data/model/radio_model.dart';
 
 class GetRadioChannel {

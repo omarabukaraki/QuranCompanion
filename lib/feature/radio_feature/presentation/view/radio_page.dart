@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constant.dart';
 import '../../../../core/custom_loading_ind.dart';
-import '../../../../get_radio_channel.dart';
+import '../view_model/get_radio_channel.dart';
 import '../../data/model/radio_model.dart';
 import 'radio_mobile_layout.dart';
 import 'radio_tablet_layout.dart';
