@@ -39,7 +39,10 @@ class _RadioTabletLayoutState extends State<RadioTabletLayout> {
               name: filteredRadios.isEmpty
                   ? widget.radioChannel[index].name
                   : filteredRadios[index].name,
-              onTap: () {
+              onTap: () async {
+                FocusManager.instance.primaryFocus?.unfocus();
+                await Future.delayed(const Duration(milliseconds: 50));
+                // ignore: use_build_context_synchronously
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return RadioControllerPage(
