@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class SurahModel {
   final int number;
   final String name;

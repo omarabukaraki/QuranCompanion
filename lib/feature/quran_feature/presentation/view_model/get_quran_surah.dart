@@ -1,5 +1,5 @@
 import 'package:quran_companion/core/api.dart';
-import 'package:quran_companion/feature/quran_model.dart';
+import 'package:quran_companion/feature/quran_feature/data/model/quran_model.dart';
 
 class GetQuranSurah {
   Future<List<SurahModel>> getQuranSuwar() async {

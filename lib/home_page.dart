@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quran_companion/core/constant.dart';
-import 'package:quran_companion/feature/quran_page.dart';
+import 'package:quran_companion/feature/quran_feature/presentation/view/quran_page.dart';
 import 'package:quran_companion/feature/radio_feature/presentation/view/radio_page.dart';
 
 class HomePage extends StatelessWidget {
