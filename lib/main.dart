@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'feature/radio_feature/presentation/view/radio_page.dart';
+import 'home_page.dart';
 
 Future<void> main() async {
   await JustAudioBackground.init(
@@ -23,7 +23,7 @@ class QuranCompanion extends StatelessWidget {
         fontFamily: 'MASSIR',
         useMaterial3: true,
       ),
-      home: const RadioPage(),
+      home: const HomePage(),
     );
   }
 }
