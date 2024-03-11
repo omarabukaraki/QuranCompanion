@@ -12,7 +12,6 @@ class Api {
 
     http.Response response =
         await http.get(Uri.parse(url), headers: {'language': 'ar'});
-    print(response.body);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
