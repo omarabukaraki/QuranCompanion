@@ -3,6 +3,8 @@ import 'package:quran_companion/core/constant.dart';
 import 'package:quran_companion/feature/quran_feature/presentation/view/quran_page.dart';
 import 'package:quran_companion/feature/radio_feature/presentation/view/radio_page.dart';
 
+import 'feature/rosary_feature/presentaion/view/rosary_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -11,32 +13,68 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(backgroundColor: AppConstant.backGroundApplication),
       backgroundColor: AppConstant.backGroundApplication,
-      body: GridView(
-          gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          children: [
-            CategoryComponent(
-              name: 'إذاعات القران الكريم',
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return const RadioPage();
-                  },
-                ));
-              },
-            ),
-            CategoryComponent(
-              image: 'assets/images/quran.png',
-              name: 'القران الكريم',
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return const QuranPage();
-                  },
-                ));
-              },
-            )
-          ]),
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: GridView(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            children: [
+              CategoryComponent(
+                name: 'إذاعات القران الكريم',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const RadioPage();
+                    },
+                  ));
+                },
+              ),
+              CategoryComponent(
+                image: 'assets/images/quran.png',
+                name: 'القران الكريم',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const QuranPage();
+                    },
+                  ));
+                },
+              ),
+              CategoryComponent(
+                image: 'assets/images/iman.png',
+                name: 'تفسير القران الكريم',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const QuranPage();
+                    },
+                  ));
+                },
+              ),
+              CategoryComponent(
+                image: 'assets/images/man.png',
+                name: 'قراء القران',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const QuranPage();
+                    },
+                  ));
+                },
+              ),
+              CategoryComponent(
+                image: 'assets/images/arabic.png',
+                name: 'خاتم التسبيح',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const RosaryPage();
+                    },
+                  ));
+                },
+              )
+            ]),
+      ),
     );
   }
 }
