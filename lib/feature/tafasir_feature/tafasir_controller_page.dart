@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:quran_companion/core/constant.dart';
-import 'package:quran_companion/feature/radio_feature/data/model/radio_model.dart';
-import 'widgets/custom_volume_button.dart';
-import 'widgets/radio_image_name.dart';
+import 'package:quran_companion/feature/tafasir_feature/tafasir_model.dart';
 
-class RadioControllerPage extends StatefulWidget {
-  const RadioControllerPage({super.key, required this.radioChannel});
+import '../radio_feature/presentation/view/widgets/custom_volume_button.dart';
+import '../radio_feature/presentation/view/widgets/radio_image_name.dart';
 
-  final RadioModel radioChannel;
+class TafasirControllerPage extends StatefulWidget {
+  const TafasirControllerPage({super.key, required this.data});
+
+  final TafasirModel data;
 
   @override
-  State<RadioControllerPage> createState() => _RadioControllerPageState();
+  State<TafasirControllerPage> createState() => _TafasirControllerPageState();
 }
 
-class _RadioControllerPageState extends State<RadioControllerPage> {
+class _TafasirControllerPageState extends State<TafasirControllerPage> {
   final player = AudioPlayer();
 
   bool isPlay = true;
@@ -27,12 +28,12 @@ class _RadioControllerPageState extends State<RadioControllerPage> {
   Future<void> setSound() async {
     await player.setAudioSource(
       AudioSource.uri(
-        Uri.parse(widget.radioChannel.url),
+        Uri.parse(widget.data.url),
         tag: MediaItem(
-          id: widget.radioChannel.id.toString(),
-          album: widget.radioChannel.name,
-          title: widget.radioChannel.name,
-          artUri: Uri.parse(widget.radioChannel.url),
+          id: widget.data.id.toString(),
+          album: widget.data.name,
+          title: widget.data.name,
+          artUri: Uri.parse(widget.data.url),
         ),
       ),
     );
@@ -75,19 +76,29 @@ class _RadioControllerPageState extends State<RadioControllerPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            RadioImageWithName(
-              name: widget.radioChannel.name,
-            ),
+            RadioImageWithName(name: widget.data.name),
             Column(children: [
-              Slider(
-                thumbColor: Colors.black,
-                activeColor: AppConstant.backGroundColor,
-                overlayColor: const MaterialStatePropertyAll(Colors.black),
-                inactiveColor: const Color(0xff757575),
-                max: position.inSeconds.toDouble(),
-                min: 0,
-                value: position.inSeconds.toDouble(),
-                onChanged: (value) async {},
+              Listener(
+                onPointerMove: (event) {
+                  setState(() {
+                    position = player.position;
+                    duration = player.duration!;
+                  });
+                },
+                child: Slider(
+                  thumbColor: Colors.black,
+                  activeColor: AppConstant.backGroundColor,
+                  overlayColor: const MaterialStatePropertyAll(Colors.black),
+                  inactiveColor: const Color(0xff757575),
+                  max: duration.inSeconds.toDouble(),
+                  min: 0,
+                  value: position.inSeconds.toDouble(),
+                  onChanged: (value) async {
+                    final positions = Duration(seconds: value.toInt());
+                    await player.seek(positions);
+                    setState(() {});
+                  },
+                ),
               ),
               Padding(
                 padding:
@@ -95,12 +106,12 @@ class _RadioControllerPageState extends State<RadioControllerPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      '',
-                      style: TextStyle(fontFamily: ''),
+                    Text(
+                      position.toString().substring(2, 7),
+                      style: const TextStyle(fontFamily: ''),
                     ),
                     Text(
-                      position.toString().substring(0, 7),
+                      (duration).toString().substring(2, 7),
                       style: const TextStyle(fontFamily: ''),
                     )
                   ],
@@ -160,6 +171,7 @@ class _RadioControllerPageState extends State<RadioControllerPage> {
                         });
                       }
                       await player.setVolume(volume);
+                      print(player.bufferedPosition);
                     },
                   ),
                 ],

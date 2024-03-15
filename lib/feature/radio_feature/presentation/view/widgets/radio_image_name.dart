@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quran_companion/core/constant.dart';
 
-import '../radio_controller_page.dart';
-
 class RadioImageWithName extends StatelessWidget {
   const RadioImageWithName({
     super.key,
-    required this.widget,
+    this.name,
   });
 
-  final RadioControllerPage widget;
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class RadioImageWithName extends StatelessWidget {
           ),
         ),
         Text(
-          widget.radioChannel.name,
+          name ?? 'name',
           style: const TextStyle(fontSize: 30),
         ),
       ],

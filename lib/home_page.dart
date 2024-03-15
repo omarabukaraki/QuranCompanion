@@ -4,6 +4,7 @@ import 'package:quran_companion/feature/quran_feature/presentation/view/quran_pa
 import 'package:quran_companion/feature/radio_feature/presentation/view/radio_page.dart';
 
 import 'feature/rosary_feature/presentaion/view/rosary_page.dart';
+import 'feature/tafasir_feature/tafasir_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return const QuranPage();
+                      return const TafasirPage();
                     },
                   ));
                 },
@@ -80,10 +81,12 @@ class HomePage extends StatelessWidget {
 }
 
 class CategoryComponent extends StatelessWidget {
-  const CategoryComponent({super.key, this.image, this.name, this.onTap});
+  const CategoryComponent(
+      {super.key, this.image, this.name, this.onTap, this.title});
   final String? name;
   final VoidCallback? onTap;
   final String? image;
+  final String? title;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -101,10 +104,10 @@ class CategoryComponent extends StatelessWidget {
           children: [
             Expanded(
               child: ListTile(
-                title: const Text(
-                  'قائمة',
+                title: Text(
+                  title ?? 'قائمة',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: 'MASSIR', fontSize: 23),
+                  style: const TextStyle(fontFamily: 'MASSIR', fontSize: 23),
                 ),
                 subtitle: Text(
                   name ?? '',
