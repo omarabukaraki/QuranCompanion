@@ -7,13 +7,24 @@ import 'radio_mobile_layout.dart';
 import 'radio_tablet_layout.dart';
 
 class RadioPage extends StatelessWidget {
-  const RadioPage({super.key});
+  const RadioPage({super.key, this.name});
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppConstant.backGroundApplication,
       appBar: AppBar(
+        title: Text(name ?? ''),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () async {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_forward_ios_rounded))
+        ],
+        automaticallyImplyLeading: false,
         backgroundColor: AppConstant.backGroundApplication,
       ),
       body: FutureBuilder<List<RadioModel>>(

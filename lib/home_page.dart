@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return const RadioPage();
+                      return const RadioPage(
+                        name: 'إذاعات القران الكريم',
+                      );
                     },
                   ));
                 },
