@@ -38,7 +38,9 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return const QuranPage();
+                      return const QuranPage(
+                        name: 'القران الكريم',
+                      );
                     },
                   ));
                 },
@@ -49,7 +51,7 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return const TafasirPage();
+                      return const TafasirPage(name: 'تفسير القران الكريم');
                     },
                   ));
                 },
@@ -71,7 +73,7 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return const RosaryPage();
+                      return const RosaryPage(name: 'خاتم التسبيح');
                     },
                   ));
                 },

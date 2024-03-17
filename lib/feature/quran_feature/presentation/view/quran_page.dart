@@ -8,12 +8,23 @@ import 'surah_page.dart';
 import 'widget/surah_component.dart';
 
 class QuranPage extends StatelessWidget {
-  const QuranPage({super.key});
+  const QuranPage({super.key, this.name});
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: Text(name ?? ''),
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              onPressed: () async {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_forward_ios_rounded))
+        ],
         backgroundColor: AppConstant.backGroundApplication,
       ),
       backgroundColor: AppConstant.backGroundApplication,

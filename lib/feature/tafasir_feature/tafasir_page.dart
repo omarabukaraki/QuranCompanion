@@ -6,12 +6,23 @@ import 'package:quran_companion/feature/tafasir_feature/tafasir_model.dart';
 import 'package:quran_companion/home_page.dart';
 
 class TafasirPage extends StatelessWidget {
-  const TafasirPage({super.key});
+  const TafasirPage({super.key, this.name});
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: Text(name ?? ''),
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              onPressed: () async {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_forward_ios_rounded))
+        ],
         backgroundColor: AppConstant.backGroundApplication,
       ),
       backgroundColor: AppConstant.backGroundApplication,

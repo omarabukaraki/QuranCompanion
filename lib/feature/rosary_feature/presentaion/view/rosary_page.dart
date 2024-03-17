@@ -4,7 +4,8 @@ import 'package:quran_companion/core/constant.dart';
 import '../widget/rosary_component.dart';
 
 class RosaryPage extends StatefulWidget {
-  const RosaryPage({super.key});
+  const RosaryPage({super.key, this.name});
+  final String? name;
 
   @override
   State<RosaryPage> createState() => _RosaryPageState();
@@ -24,6 +25,16 @@ class _RosaryPageState extends State<RosaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          title: Text(widget.name ?? ''),
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_forward_ios_rounded))
+          ],
           backgroundColor: AppConstant.backGroundApplication,
         ),
         backgroundColor: AppConstant.backGroundApplication,
