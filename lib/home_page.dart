@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quran_companion/core/constant.dart';
 import 'package:quran_companion/feature/quran_feature/presentation/view/quran_page.dart';
 import 'package:quran_companion/feature/radio_feature/presentation/view/radio_page.dart';
-
-import 'feature/rosary_feature/presentaion/view/rosary_page.dart';
+import 'feature/reciters_feature/pretention/view/reciters_page.dart';
+import 'feature/rosary_feature/pretention/view/rosary_page.dart';
 import 'feature/tafasir_feature/tafasir_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,12 +17,12 @@ class HomePage extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: GridView(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
             children: [
               CategoryComponent(
                 name: 'إذاعات القران الكريم',
-                onTap: () {
+                onTap: () async {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
                       return const RadioPage(
@@ -62,7 +62,9 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return const QuranPage();
+                      return const RecitersPage(
+                        name: 'قراء القران',
+                      );
                     },
                   ));
                 },
